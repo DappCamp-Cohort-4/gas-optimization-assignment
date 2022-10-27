@@ -36,7 +36,7 @@ The goal of this exercise is to optimize contracts for minimal gas usage. This a
     git checkout -b my-name
     ```
 
--   Make changes to the `src/PetPark.sol` file. The tests in `test/PetPark.t.sol` should run successfully.
+-   Make changes to contracts in this directory - `src/`. The tests in `test/` directory should run successfully.
 
 -   Run Tests
     ```
