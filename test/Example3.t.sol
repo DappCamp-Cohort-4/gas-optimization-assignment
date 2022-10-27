@@ -26,7 +26,7 @@ contract Example3Test is Test {
         uint256 gasUsed = checkPoint1 - gasleft();
         
         if (gasUsed >= BASE_GAS_COST){
-            console.log("Gas used is %d, expected usage was less than %d", gasUsed, BASE_GAS_COST);
+            console.log("Gas used is %d, should be less than %d", gasUsed, BASE_GAS_COST);
         }
         assertLe(gasUsed, BASE_GAS_COST);
     }
