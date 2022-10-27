@@ -5,7 +5,7 @@ import "forge-std/Test.sol";
 import "../src/Example2.sol";
 
 contract Example2Test is Test {
-    uint256 immutable BASE_GAS_COST = 44500;
+    uint256 immutable BASE_GAS_COST = 44100;
     uint256[] arr = [3, 5, 7, 9, 12, 31]; //SUM = 67
 
     Example2 ex;
