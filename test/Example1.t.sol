@@ -5,7 +5,7 @@ import "forge-std/Test.sol";
 import "../src/Example1.sol";
 
 contract Example1Test is Test {
-    uint256 immutable BASE_GAS_COST = 130000;
+    uint256 immutable BASE_GAS_COST = 121000;
 
     function testShouldHaveCorrectValues() public {
         Example1 ex = new Example1();
@@ -18,6 +18,10 @@ contract Example1Test is Test {
         uint256 checkPoint1 = gasleft();
         Example1 ex = new Example1();
         uint256 gasUsed = checkPoint1 - gasleft();
-        assert(gasUsed < BASE_GAS_COST);
+
+        if (gasUsed >= BASE_GAS_COST){
+            console.log("Gas used is %d, should be less than %d", gasUsed, BASE_GAS_COST);
+        }
+        assertLe(gasUsed, BASE_GAS_COST);
     }
 }

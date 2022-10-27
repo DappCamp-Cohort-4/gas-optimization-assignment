@@ -20,10 +20,14 @@ contract Example3Test is Test {
         assertEq(amtForOwner, 30);
     }
 
-    function testShouldPassGasTest() public view {
+    function testShouldPassGasTest() public {
         uint256 checkPoint1 = gasleft();
         ex.getOwnerMargin(AMOUNT);
         uint256 gasUsed = checkPoint1 - gasleft();
-        assert(gasUsed < BASE_GAS_COST);
+        
+        if (gasUsed >= BASE_GAS_COST){
+            console.log("Gas used is %d, should be less than %d", gasUsed, BASE_GAS_COST);
+        }
+        assertLe(gasUsed, BASE_GAS_COST);
     }
 }
