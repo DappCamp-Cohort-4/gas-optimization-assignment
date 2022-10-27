@@ -25,6 +25,10 @@ contract Example2Test is Test {
         uint256 checkPoint1 = gasleft();
         ex.incrementBy(arr);
         uint256 gasUsed = checkPoint1 - gasleft();
-        assert(gasUsed < BASE_GAS_COST);
+
+        if (gasUsed >= BASE_GAS_COST){
+            console.log("Gas used is %d, expected usage was less than %d", gasUsed, BASE_GAS_COST);
+        }
+        assertLe(gasUsed, BASE_GAS_COST);
     }
 }
