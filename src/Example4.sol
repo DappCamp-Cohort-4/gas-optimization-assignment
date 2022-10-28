@@ -2,23 +2,13 @@
 pragma solidity 0.8.13;
 
 contract Example4 {
-    address[3] public receivers;
-    uint256 public startTime;
+    uint8 locked;
 
-    constructor(address[3] memory _receivers) payable {
-        receivers = _receivers;
-        startTime = block.timestamp;
+    function isLocked() public view returns (bool) {
+        return locked == 0;
     }
 
-    function dispense() external {
-        require(
-            block.timestamp > startTime + 3 days,
-            "Dispense period has not started"
-        );
-
-        uint amount = address(this).balance / 3;
-        payable(receivers[0]).transfer(amount);
-        payable(receivers[1]).transfer(amount);
-        payable(receivers[2]).transfer(amount);
+    function unLock() external {
+        locked = 1;
     }
 }
