@@ -1,6 +1,6 @@
 pragma solidity ^0.8.13;
 
-contract Example3 {
+contract MarginCalculator {
     uint256 marginPercentage = 30;
 
     function getOwnerMargin(uint256 amount) public view returns (uint256 amountForSender, uint256 amountForOwner) {

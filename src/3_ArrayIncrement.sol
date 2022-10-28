@@ -1,6 +1,6 @@
 pragma solidity ^0.8.13;
 
-contract Example2 {
+contract ArrayIncrement {
     uint256 public counter;
 
     function incrementBy(uint256[] memory arr) public {
