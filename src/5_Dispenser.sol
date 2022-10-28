@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
 pragma solidity 0.8.13;
 
-contract Example5 {
+contract Dispenser {
     address[3] public receivers;
     uint256 public startTime;
 

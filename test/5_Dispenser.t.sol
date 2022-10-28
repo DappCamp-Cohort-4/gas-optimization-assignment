@@ -2,13 +2,13 @@
 pragma solidity ^0.8.13;
 
 import "forge-std/Test.sol";
-import "../src/Example5.sol";
+import "../src/5_Dispenser.sol";
 
-contract Example5Test is Test {
+contract DispenserTest is Test {
     uint256 immutable BASE_GAS_COST = 111000;
     uint256 immutable AMOUNT = 3 ether;
 
-    Example5 ex;
+    Dispenser dispenser;
 
     address user1;
     address user2;
@@ -21,7 +21,7 @@ contract Example5Test is Test {
 
         address[3] memory receivers = [user1, user2, user3];
 
-        ex = (new Example5){value: AMOUNT}(receivers);
+        dispenser = (new Dispenser){value: AMOUNT}(receivers);
     }
 
     function testDispense() public {
@@ -31,7 +31,7 @@ contract Example5Test is Test {
         uint256 user2Balance = user2.balance;
         uint256 user3Balance = user3.balance;
 
-        ex.dispense();
+        dispenser.dispense();
 
         uint256 increment = AMOUNT / 3;
 
@@ -44,7 +44,7 @@ contract Example5Test is Test {
         vm.warp(4 days);
 
         uint256 checkPoint1 = gasleft();
-        ex.dispense();
+        dispenser.dispense();
         uint256 gasUsed = checkPoint1 - gasleft();
         
         if (gasUsed >= BASE_GAS_COST){

@@ -2,28 +2,29 @@
 pragma solidity ^0.8.13;
 
 import "forge-std/Test.sol";
-import "../src/Example2.sol";
+import "../src/4_Lock.sol";
 
-contract Example2Test is Test {
-    uint256 immutable BASE_GAS_COST = 44100;
-    uint256[] arr = [3, 5, 7, 9, 12, 31]; //SUM = 67
+contract LockTest is Test {
+    uint256 immutable BASE_GAS_COST = 27250;
 
-    Example2 ex;
+    Lock lock;
 
     function setUp() public {
-        ex = new Example2();
+        lock = new Lock();
     }
 
-    function testShouldHaveCorrectValues() public {
-        uint256 prevCounter = ex.counter();
-        ex.incrementBy(arr);
-        uint256 currentCounter = ex.counter();
-        assertEq(currentCounter, prevCounter + 67);
+    function testIsLocked() public {
+        assertEq(lock.isLocked(), true);
+    }
+
+    function testUnLock() public {
+        lock.unLock();
+        assertEq(lock.isLocked(), false);
     }
 
     function testShouldPassGasTest() public {
         uint256 checkPoint1 = gasleft();
-        ex.incrementBy(arr);
+        lock.unLock();
         uint256 gasUsed = checkPoint1 - gasleft();
 
         if (gasUsed >= BASE_GAS_COST){

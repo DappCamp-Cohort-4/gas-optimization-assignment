@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
 pragma solidity 0.8.13;
 
-contract Example4 {
+contract Lock {
     uint8 locked;
 
     function isLocked() public view returns (bool) {
