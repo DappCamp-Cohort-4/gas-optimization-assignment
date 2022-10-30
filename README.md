@@ -10,12 +10,17 @@ The goal of this exercise is to optimize contracts for minimal gas usage. This a
 
 ## What each contract does?
 
-- `Example1`
+- `Storage`
     - Stores certain variables such as `day`, `amount` and `ownerAddr`
-- `Example2`
+- `ArrayIncrement`
     - Stores a state variable `counter`. Function `incrementBy` takes in an array and adds each element of this array to counter variable
-- `Example3`
+- `MarginCalculator`
     - Stores a state variable `marginPercentage`. Function `getOwnerMargin` takes in an amount and returns respective amounts for owner and sender
+- `Lock`
+    - Determines if the contract is locked or not on the basis of value stored in `locked` variable
+- `Dispenser`
+    - Stores the ether received during initialisation
+    - It has a waiting period of 3 days before the funds are dispensed to all three receivers
 
 ## Evaluation
 
@@ -42,4 +47,5 @@ The goal of this exercise is to optimize contracts for minimal gas usage. This a
     ```
     forge test
     ```
--   Create a pull request from your forked repo to main branch of original repo to run the github workflow.
+
+-   Create a pull request from your branch to the main branch of original repo to run the github workflow.
